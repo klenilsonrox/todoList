@@ -65,3 +65,16 @@ export const deleteTodo = async(req,res)=>{
         res.status(500).json(error)
     }
 }
+
+export const completeTodo = async (req,res)=>{
+    const {completed} = req.body
+    try{
+        const todoExist = await Todo.findById(req.params.id)
+        if(!todoExist){
+            return res.status(404).json({message:"Tarefa não encontrada"})
+        }
+        await Todo.findByIdAndUpdate(req.params.id, completed, {new:true})
+    }catch(error){
+        console.log(error)
+    }
+}

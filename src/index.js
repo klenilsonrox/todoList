@@ -1,6 +1,6 @@
 import express from "express"
 import dotenv from "dotenv"
-import cors from "express"
+import cors from "cors"
 import router from "./routes/todo-routes.js"
 import { connectDB } from "./config/connectDB.js"
 
